@@ -8,19 +8,33 @@ $('#today-label').textContent = today.toLocaleDateString(undefined,{weekday:'lon
 
 const defaultState = {
   habits:[
-    {id:1,name:'Bible reading',category:'Faith',done:{}},
+    {id:1,name:'Time with God',category:'Faith',done:{}},
     {id:2,name:'Prayer time',category:'Faith',done:{}},
-    {id:3,name:'Move my body',category:'Wellness',done:{}},
-    {id:4,name:'Drink enough water',category:'Health',done:{}},
-    {id:5,name:'Take my vitamins',category:'Health',done:{}},
-    {id:6,name:'No fizzy drinks',category:'Wellness',done:{}}
+    {id:3,name:'10 000 - 12 000 steps',category:'Fitness',done:{}},
+    {id:4,name:'Drink water',category:'Health',done:{}},
+    {id:5,name:'Protein meals',category:'Nutrition',done:{}},
+    {id:6,name:'No Sugar',category:'Nutrition',done:{}},
+    {id:7,name:'Limited screen time',category:'Wellness',done:{}},
+    {id:8,name:'Gym',category:'Fitness',done:{}},
+    {id:9,name:'Read book',category:'Personal growth',done:{}},
+    {id:10,name:'Watch sermon',category:'Faith',done:{}},
+    {id:11,name:'Brush teeth 2-3 times',category:'Health',done:{}},
+    {id:12,name:'No secular movies & music',category:'Faith',done:{}}
   ],
   tasks:[{id:101,title:'Plan my day',done:false,date:keyToday},{id:102,title:'Prepare gym clothes',done:false,date:keyToday}],
   workouts:[], workoutPlans:[], exerciseLibrary:[], health:{weight:'',water:0,sleep:'',mood:'',steps:0}, journal:{}, settings:{stepGoal:12000,waterGoal:8}
 };
 let state;
-try { state = {...defaultState,...JSON.parse(localStorage.getItem('becoming-state')||'{}')}; }
-catch { state = structuredClone(defaultState); }
+try {
+  const saved = JSON.parse(localStorage.getItem('becoming-state')||'{}');
+  state = {...defaultState,...saved};
+  // Keep the requested habit list exact while preserving completion history for matching names.
+  const oldHabits = Array.isArray(saved.habits) ? saved.habits : [];
+  state.habits = defaultState.habits.map(h => {
+    const previous = oldHabits.find(item => item.name === h.name);
+    return {...h, done: previous && previous.done ? previous.done : {}};
+  });
+} catch { state = structuredClone(defaultState); }
 function save(){localStorage.setItem('becoming-state',JSON.stringify(state));}
 let page='home';
 let selectedDate=keyToday;
@@ -42,7 +56,7 @@ function home(){let tasks=taskList();let complete=tasks.filter(t=>t.done).length
   <div class="section-head"><h2>Wellness snapshot</h2><button class="text-button" data-go="health">LOG TODAY ↗</button></div>
   <div class="grid-2"><div class="card"><div class="card-label">Water</div><div class="metric">${state.health.water||0}<small> / ${state.settings.waterGoal} glasses</small></div><div class="progress"><span style="width:${Math.min(100,(state.health.water||0)/state.settings.waterGoal*100)}%"></span></div></div><div class="card"><div class="card-label">Steps</div><div class="metric">${Number(state.health.steps||0).toLocaleString()}<small> / ${(state.settings.stepGoal).toLocaleString()}</small></div><div class="progress"><span style="width:${Math.min(100,(state.health.steps||0)/state.settings.stepGoal*100)}%"></span></div></div></div>
   <div class="card dark" style="margin-top:12px"><div class="card-label">A moment with God</div><div class="quote">“Be still, and know that I am God.”</div><p class="note" style="color:#aaa;margin:10px 0 0">Psalm 46:10 · Take a breath. You don’t have to do everything today.</p><button class="secondary" style="margin-top:15px" data-go="faith">OPEN FAITH JOURNAL</button></div>`}
-function habits(){return `<div class="page-intro"><p>BUILD YOUR RHYTHM</p><h2>Daily habits</h2><p>Consistency over perfection. Every check is a small win.</p></div><div class="grid-2"><div class="card dark"><div class="card-label">Today’s progress</div><div class="big-number">${doneHabits()}<span style="font-size:18px;color:#aaa">/${state.habits.length}</span></div><p class="note" style="color:#aaa;margin:0">habits completed</p><div class="progress"><span style="width:${state.habits.length?doneHabits()/state.habits.length*100:0}%"></span></div></div><div class="card"><div class="card-label">Gentle reminder</div><p class="quote" style="font-size:16px">You can begin again at any moment.</p></div></div><div class="section-head"><h2>Your habits</h2></div>${habitRows()}<div class="section-head"><h2>Add a habit</h2></div><form id="habit-form" class="card"><div class="field"><label for="habit-name">Habit name</label><input id="habit-name" required maxlength="60" placeholder="e.g. 10-minute walk"></div><div class="field"><label for="habit-category">Category</label><select id="habit-category"><option>Faith</option><option>Fitness</option><option>Health</option><option>Wellness</option><option>Personal</option></select></div><button class="primary">ADD HABIT</button></form>`}
+function habits(){return `<div class="page-intro"><p>BUILD YOUR RHYTHM</p><h2>Daily habits</h2><p>Consistency over perfection. Every check is a small win.</p></div><div class="grid-2"><div class="card dark"><div class="card-label">Today’s progress</div><div class="big-number">${doneHabits()}<span style="font-size:18px;color:#aaa">/${state.habits.length}</span></div><p class="note" style="color:#aaa;margin:0">habits completed</p><div class="progress"><span style="width:${state.habits.length?doneHabits()/state.habits.length*100:0}%"></span></div></div><div class="card"><div class="card-label">Gentle reminder</div><p class="quote" style="font-size:16px">You can begin again at any moment.</p></div></div><div class="section-head"><h2>Your habits</h2></div>${habitRows()}<p class="note">Your daily habit list is customised to the 12 habits you selected.</p>`}
 const starterExercises = [
   ['Barbell squat','Legs'],['Romanian deadlift','Legs'],['Hip thrust','Glutes'],['Dumbbell lunges','Legs'],['Calf raises','Legs'],['Leg press','Legs'],
   ['Lat pulldown','Back'],['Seated cable row','Back'],['Dumbbell row','Back'],['Bicep curls','Arms'],['Hammer curls','Arms'],['Push-ups','Chest'],['Dumbbell chest press','Chest'],['Shoulder press','Shoulders'],['Lateral raises','Shoulders'],['Triceps pushdown','Arms'],
