@@ -42,3 +42,7 @@ See the Apple and MDN links in `INTEGRATIONS.md` for the current instructions.
 2. Add editable habit schedules, reminders, weekly/monthly charts, and richer workout templates.
 3. Decide whether Apple Health/Garmin data should be read-only import or two-way sync.
 4. Implement the relevant integration with privacy controls and explicit consent.
+
+
+## Workout Planner update
+The Fitness section now includes a weekly workout schedule, custom workouts, an exercise library (built-in plus user-added exercises), and exercise details for sets, reps, weight, rest time, and notes. Custom workout entries are stored in the same local Becoming data as other features.

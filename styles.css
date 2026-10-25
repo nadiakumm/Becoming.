@@ -72,3 +72,6 @@ p{line-height:1.5}
 .inline-form{display:flex;gap:8px;margin-top:12px}.inline-form input{flex:1;min-width:0;border:1px solid #ddd;border-radius:12px;padding:11px}
 .small-link{font-size:11px;color:#777;text-decoration:underline}
 @media(min-width:560px){body{padding:20px 0}.app-shell{border-radius:28px;overflow:hidden;min-height:calc(100dvh - 40px)}.bottom-nav{bottom:20px;border-radius:0 0 28px 28px}}
+
+/* Workout planner */
+.planner-row{align-items:flex-start}.planner-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}.draft-exercises{display:grid;gap:10px;margin:12px 0}.exercise-entry{border:1px solid #e5e5e5;border-radius:14px;padding:12px}.exercise-entry-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}.exercise-entry .field{margin:8px 0}.exercise-entry .field label{font-size:10px}.exercise-entry .form-row{gap:8px}.exercise-entry input{padding:10px}.text-button{border:0;background:transparent;color:#555;font-size:10px;font-weight:800;padding:4px 0}
