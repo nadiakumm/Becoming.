@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--ink:#111;--muted:#777;--line:#e8e8e8;--soft:#f6f6f6;--paper:#fff;--radius:22px}
+*{box-sizing:border-box}
+body{margin:0;background:#f1f1f1;color:var(--ink);font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app-shell{max-width:520px;min-height:100dvh;margin:0 auto;background:var(--paper);position:relative;padding:0 20px 106px;box-shadow:0 0 40px #00008}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 20px) 0 18px}
+.eyebrow{font-size:10px;letter-spacing:2px;font-weight:700;color:#888;margin:0 0 6px}
+h1,h2,h3,p{margin-top:0}
+h1{font:800 30px Manrope,sans-serif;letter-spacing:-1.5px;margin:0}
+.period{color:#999}
+h2{font:700 23px Manrope,sans-serif;letter-spacing:-.7px;margin:0 0 8px}
+h3{font-size:14px;margin:0 0 10px}
+p{line-height:1.5}
+.icon-button{border:0;background:#111;color:white;border-radius:50%;height:42px;width:42px;font-size:25px}
+.greeting{font-size:14px;color:#777;margin:0 0 6px}
+.hero{background:#111;color:white;border-radius:28px;padding:24px;margin:10px 0 22px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff26;border-radius:50%;right:-60px;top:-50px;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05}
+.hero .eyebrow{color:#aaa}
+.hero h2{font-size:28px;max-width:270px;line-height:1.14;margin:0 0 16px}
+.hero p{font-size:12px;color:#c9c9c9;margin:0}
+.hero-stats{display:flex;gap:18px;margin-top:24px}
+.hero-stat strong{display:block;font:700 22px Manrope}
+.hero-stat span{font-size:10px;color:#aaa;letter-spacing:.5px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:22px 0 12px}
+.section-head h2{font-size:18px;margin:0}
+.text-button{background:none;border:0;padding:5px 0;color:#666;font-size:12px;font-weight:700}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;min-width:0}
+.card.dark{background:#111;color:white;border-color:#111}
+.card-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:12px}
+.card.dark .card-label{color:#aaa}
+.metric{font:700 25px Manrope;letter-spacing:-1px}
+.metric small{font:500 11px 'DM Sans';letter-spacing:0;color:#888}
+.progress{height:5px;border-radius:10px;background:#eee;overflow:hidden;margin-top:12px}
+.progress span{display:block;height:100%;background:#111;border-radius:10px}
+.card.dark .progress{background:#333}.card.dark .progress span{background:white}
+.list{display:flex;flex-direction:column;gap:9px}
+.list-row{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:16px;padding:12px}
+.check{width:24px;height:24px;border:1.5px solid #ccc;border-radius:50%;display:grid;place-items:center;flex:none;background:white;color:white}
+.check.checked{background:#111;border-color:#111;color:white}
+.row-main{flex:1;min-width:0}.row-title{font-size:13px;font-weight:600}.row-sub{font-size:11px;color:#888;margin-top:3px}
+.tag{font-size:10px;background:#f1f1f1;padding:5px 8px;border-radius:20px;color:#555;white-space:nowrap}
+.empty{padding:18px;border:1px dashed #ddd;border-radius:16px;color:#888;font-size:12px;text-align:center}
+.primary{background:#111;color:white;border:0;border-radius:14px;padding:13px 16px;font-weight:700;font-size:12px}
+.secondary{background:white;color:#111;border:1px solid #ddd;border-radius:14px;padding:12px 14px;font-weight:700;font-size:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}
+.field label{font-size:11px;color:#777;font-weight:700}
+.field input,.field select,.field textarea{border:1px solid #ddd;border-radius:12px;padding:12px;background:#fff;color:#111;min-width:0;width:100%}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.page-intro{margin:8px 0 20px}.page-intro p{font-size:13px;color:#777;margin:0}
+.page-intro h2{font-size:28px}
+.week-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:16px 0}
+.day-pill{border:1px solid #eee;border-radius:14px;padding:10px 0;text-align:center;font-size:10px;color:#888}
+.day-pill strong{display:block;font-size:13px;color:#111;margin-top:6px}
+.day-pill.today{background:#111;color:#aaa;border-color:#111}.day-pill.today strong{color:#fff}
+.big-number{font:800 40px Manrope;letter-spacing:-2px}
+.note{font-size:11px;color:#888;line-height:1.5}
+.quote{font:600 18px Manrope;line-height:1.4;letter-spacing:-.4px}
+.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}
+.month-grid span{padding:8px 0;font-size:11px;color:#888}
+.month-grid button{border:0;background:#f5f5f5;border-radius:9px;padding:9px 0;font-size:11px}
+.month-grid button.selected{background:#111;color:white}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);padding:10px 14px calc(env(safe-area-inset-bottom) + 8px);background:#ffffffed;backdrop-filter:blur(18px);border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:5}
+.nav-item{background:none;border:0;color:#999;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:50px;padding:4px}
+.nav-item span{font-size:21px;line-height:1.1}.nav-item small{font-size:9px;font-weight:700}
+.nav-item.active{color:#111}.nav-item.active span{font-weight:800}
+.toast{position:fixed;bottom:90px;left:50%;transform:translate(-50%,20px);background:#111;color:#fff;border-radius:30px;padding:11px 16px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:10;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.inline-form{display:flex;gap:8px;margin-top:12px}.inline-form input{flex:1;min-width:0;border:1px solid #ddd;border-radius:12px;padding:11px}
+.small-link{font-size:11px;color:#777;text-decoration:underline}
+@media(min-width:560px){body{padding:20px 0}.app-shell{border-radius:28px;overflow:hidden;min-height:calc(100dvh - 40px)}.bottom-nav{bottom:20px;border-radius:0 0 28px 28px}}
